@@ -1,6 +1,6 @@
 import app from "./src/app.js";
-import config from "./src/configs/config.js";
+import appConfig from "./src/configs/config.js";
 
-app.listen(config.PORT, () => {
-    console.log(`server on ${config.PORT}`);
+app.listen(appConfig.PORT, () => {
+    console.log(`server on ${appConfig.PORT}`);
 });
