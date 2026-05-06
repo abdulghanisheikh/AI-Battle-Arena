@@ -9,7 +9,7 @@ export const mistralModel = new MistralAI({
 });
 
 export const geminiModel = new ChatGoogle({
-    model: "gemini-flash-latest",
+    model: "gemini-2.5-flash-lite",
     apiKey: appConfig.GEMINI_API_KEY
 });
 

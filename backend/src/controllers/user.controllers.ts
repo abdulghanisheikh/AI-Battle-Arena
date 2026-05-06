@@ -8,5 +8,5 @@ export const useGraph = async(req: any, res: any) => {
         messages: [new HumanMessage(userMessage)]
     });
 
-    return result;
+    return res.send(result);
 }
