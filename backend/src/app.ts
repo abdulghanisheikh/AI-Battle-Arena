@@ -4,7 +4,7 @@ import graphRouter from "./routes/graph.routes.js";
 const app = express();
 
 app.use(express.json());
-app.use(graphRouter);
+app.use("/useGraph", graphRouter);
 
 app.get("/", (req, res) => {
     res.status(200).json({ status: "ok" });
