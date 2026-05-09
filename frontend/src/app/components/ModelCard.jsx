@@ -35,7 +35,7 @@ const ModelCard = ({ variant, isWinner, hasJudgement, score, content }) => {
         </div>
 
         {hasJudgement && (
-          <div className={`px-4 py-1.5 rounded-full text-xs font-bold font-mono border ${badgeStyle}`}>
+          <div className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-tight border ${badgeStyle}`}>
             {isWinner && 'WINNING '}
             {(!isWinner || isModel1) && <span className="opacity-60 font-normal mr-1">SCORE</span>}
             <span className="text-base text-white">{score}</span>/10

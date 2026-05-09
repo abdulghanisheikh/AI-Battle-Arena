@@ -7,7 +7,7 @@ const api = new axios.create({
     withCredentials: true
 });
 
-export const startBattle = async(problem) =>  {
-    const response = await api.post('/useGraph', {problem});
+export const startBattle = async(userMessage) => {
+    const response = await api.post('/useGraph', {userMessage});
     return response;
 }
