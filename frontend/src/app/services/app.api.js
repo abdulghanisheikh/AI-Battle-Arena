@@ -9,6 +9,5 @@ const api = new axios.create({
 
 export const startBattle = async(problem) =>  {
     const response = await api.post('/useGraph', {problem});
-
     return response;
 }
