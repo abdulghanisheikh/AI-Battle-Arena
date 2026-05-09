@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import './index.css';
-import ModelCard from './ModelCard';
+import ModelCard from './components/ModelCard';
+import { PiTerminalWindowBold } from "react-icons/pi";
+import { BsSend, BsLightningChargeFill, BsTrophy } from "react-icons/bs";
+import { RiAttachment2 } from "react-icons/ri";
+import { FaBalanceScale } from "react-icons/fa";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
@@ -72,13 +75,13 @@ const App = () => {
           <ul className="space-y-1">
             <li>
               <a href="#" className="flex items-center gap-3 px-6 py-3 bg-[#1e2330] border-l-2 border-indigo-400 text-indigo-300 text-sm font-medium">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <BsLightningChargeFill size={16} />
                 Live Arena
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center gap-3 px-6 py-3 text-zinc-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-colors">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <BsTrophy size={16} />
                 Leaderboards
               </a>
             </li>
@@ -107,7 +110,7 @@ const App = () => {
             <div className="flex flex-col items-center max-w-2xl w-full text-center mt-[-10vh]">
               {/* Main Icon */}
               <div className="relative w-16 h-16 rounded-2xl bg-[#1c1e22] border border-violet-500/40 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(139,92,246,0.1)]">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <BsLightningChargeFill size={32} className="text-white" />
               </div>
 
               <h2 className="text-4xl font-bold text-white mb-4">Start a New Battle</h2>
@@ -120,7 +123,7 @@ const App = () => {
                 
                 <div className="flex items-start gap-3 mb-2">
                   <div className="mt-1">
-                    <svg className="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <PiTerminalWindowBold size={21} className='opacity-50' />
                   </div>
                   <textarea
                     className="w-full bg-transparent text-white placeholder-zinc-600 resize-none outline-none min-h-[100px] font-mono"
@@ -139,13 +142,13 @@ const App = () => {
                 <div className="flex justify-between items-end mt-4">
                   <div className="flex gap-4 text-zinc-500">
                     <button type="button" className="hover:text-white transition-colors cursor-pointer">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                      <RiAttachment2 size={21} />
                     </button>
                   </div>
 
                   <button type="submit" className="bg-[#b0c6ff] text-[#002d6e] px-6 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-[#d9e2ff] transition-colors cursor-pointer">
-                    INITIALIZE DUEL
-                    <svg className="w-4 h-4 transform rotate-45 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    <p>INITIALIZE DUEL</p>
+                    <BsSend size={18} />
                   </button>
                 </div>
               </form>
@@ -198,7 +201,7 @@ const App = () => {
                   {item.judgement && (
                     <div className="bg-[#1c1e22] border border-[#00f2ff]/30 rounded-xl overflow-hidden">
                       <div className="bg-[#161c20] px-6 py-4 border-b border-[#00f2ff]/20 flex items-center gap-2">
-                        <svg className="w-5 h-5 text-[#00f2ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                        <FaBalanceScale size={20} className="text-[#00f2ff]" />
                         <span className="text-xs font-mono text-[#00f2ff] tracking-widest font-bold">JUDGE'S VERDICT</span>
                       </div>
                       <div className="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
@@ -234,7 +237,7 @@ const App = () => {
               </button>
               <button type="submit" className="bg-[#b0c6ff] text-[#002d6e] px-5 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-[#d9e2ff] transition-colors cursor-pointer">
                 <span>SEND</span> 
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+                <BsSend size={18} />
               </button>
             </form>
           </div>
