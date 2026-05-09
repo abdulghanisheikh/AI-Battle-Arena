@@ -4,7 +4,7 @@ import UserChat from './UserChat';
 import Judgement from './Judgement';
 import { RiAttachment2 } from "react-icons/ri";
 
-const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleSend }) => {
+const ChatInterface = ({ messages, messagesEndRef, inputValue, setInputValue, handleSend }) => {
   return (
     <>
       {/* Scrollable feed */}
@@ -12,8 +12,8 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
         <div className="max-w-4xl mx-auto flex flex-col gap-10">
           
           {messages.map((item, idx) => {
-            const isModelAWinner = item.judgement && item.judgement.winner === 1;
-            const isModelBWinner = item.judgement && item.judgement.winner === 2;
+            const isModelAWinner = item.judgement?.solution_1_score > item.judgement?.solution_2_score;
+            const isModelBWinner = item.judgement?.solution_2_score > item.judgement?.solution_1_score;
 
             return (
               <div key={idx} className="flex flex-col gap-8 animate-fade-in">
@@ -77,4 +77,4 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
   );
 };
 
-export default ChatArea;
+export default ChatInterface;
