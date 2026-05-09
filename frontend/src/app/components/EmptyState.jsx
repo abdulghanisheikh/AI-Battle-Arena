@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsLightningChargeFill, BsSend } from "react-icons/bs";
 import { PiTerminalWindowBold } from "react-icons/pi";
 import { RiAttachment2 } from "react-icons/ri";

@@ -3,6 +3,7 @@ import ModelCard from './ModelCard';
 import { BsSend } from "react-icons/bs";
 import UserChat from './UserChat';
 import Judgement from './Judgement';
+import { RiAttachment2 } from "react-icons/ri";
 
 const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleSend }) => {
   return (
@@ -54,15 +55,17 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSend} className="bg-[#282a2d] rounded-xl flex items-center p-2 shadow-2xl border border-white/5">
             <input
-              type="text" 
+              type="text"
               placeholder="Type your problem statement here"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               className="flex-1 bg-transparent border-none text-sm text-white px-4 placeholder-zinc-500 focus:outline-none focus:ring-0"
             />
+            
             <button type="button" className="px-3 py-1 text-zinc-400 hover:text-white transition-colors cursor-pointer text-sm">
-              Add file
+              <RiAttachment2 size={21} />
             </button>
+
             <button type="submit" className="bg-[#b0c6ff] text-[#002d6e] px-5 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-[#d9e2ff] transition-colors cursor-pointer">
               <span>SEND</span> 
               <BsSend size={18} />
