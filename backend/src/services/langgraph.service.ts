@@ -89,11 +89,11 @@ const judgeNode: GraphNode<typeof state> = async(state) => {
 }
 
 const graph = new StateGraph(state)
-    .addNode("solution", solutionNode)
-    .addNode("judge", judgeNode)
-    .addEdge(START, "solution")
-    .addEdge("solution", "judge")
-    .addEdge("judge", END)
+    .addNode("solution_node", solutionNode)
+    .addNode("judge_node", judgeNode)
+    .addEdge(START, "solution_node")
+    .addEdge("solution_node", "judge_node")
+    .addEdge("judge_node", END)
     .compile();
 
 export default graph;
