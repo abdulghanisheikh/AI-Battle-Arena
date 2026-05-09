@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './index.css';
 import ModelCard from './components/ModelCard';
+import Sidebar from './components/Sidebar';
+import TopBar from './components/TopBar';
 import { PiTerminalWindowBold } from "react-icons/pi";
-import { BsSend, BsLightningChargeFill, BsTrophy } from "react-icons/bs";
+import { BsSend, BsLightningChargeFill } from "react-icons/bs";
 import { RiAttachment2 } from "react-icons/ri";
 import { FaBalanceScale } from "react-icons/fa";
 
@@ -61,49 +63,13 @@ const App = () => {
     <div className="flex h-screen bg-[#111316] text-zinc-200 font-sans overflow-hidden">
       
       {/* Sidebar */}
-      <aside className="w-64 bg-[#16181c] border-r border-white/5 flex flex-col shrink-0 hidden md:flex">
-        <div className="p-6">
-          <h1 className="text-xl font-bold tracking-wider text-white">AI BATTLE ARENA</h1>
-        </div>
-        
-        <div className="px-6 py-4">
-          <div className="text-[10px] text-zinc-500 font-bold tracking-widest mb-1">COMMAND CENTER</div>
-          <div className="text-lg font-semibold text-[#b0c6ff]">Elite Rank</div>
-        </div>
-
-        <nav className="flex-1 mt-4">
-          <ul className="space-y-1">
-            <li>
-              <a href="#" className="flex items-center gap-3 px-6 py-3 bg-[#1e2330] border-l-2 border-indigo-400 text-indigo-300 text-sm font-medium">
-                <BsLightningChargeFill size={16} />
-                Live Arena
-              </a>
-            </li>
-            <li>
-              <a href="#" className="flex items-center gap-3 px-6 py-3 text-zinc-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-colors">
-                <BsTrophy size={16} />
-                Leaderboards
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="p-6">
-          <button onClick={() => setMessages([])} className="w-full bg-[#b0c6ff] text-[#002d6e] font-semibold py-3 px-4 rounded hover:bg-[#d9e2ff] transition-colors text-sm cursor-pointer">
-            NEW BATTLE
-          </button>
-        </div>
-      </aside>
+      <Sidebar onNewBattle={() => setMessages([])} />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col relative bg-[#111316]">
 
         {/* Top bar */}
-        <header className="flex justify-between md:justify-end items-center px-6 py-3 pb-2">
-          <button className="hover:text-white cursor-pointer text-lg transition-colors">
-              Login
-          </button>
-        </header>
+        <TopBar />
 
         {messages.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
@@ -169,12 +135,11 @@ const App = () => {
                 <div key={idx} className="flex flex-col gap-8 animate-fade-in">
                   
                   {/* User Prompt */}
-                  <div className="bg-[#1c1e22] border border-[#00f2ff]/40 rounded-xl p-6 shadow-[0_0_15px_rgba(0,242,255,0.05)]">
-                    <div className="text-lg text-[#00f2ff] font-mono tracking-widest mb-3 flex items-center gap-2">
+                  <div className="bg-[#1c1e22] border border-[#00f2ff]/40 rounded-xl rounded-tl-none px-5 py-2 shadow-[0_0_15px_rgba(0,242,255,0.05)] w-fit justify-start">
+                    <div className="text-lg text-[#00f2ff] font-mono tracking-widest flex items-center gap-2">
                       USER PROMPT
-                      <div className="h-[1px] flex-1 bg-[#00f2ff]/20"></div>
                     </div>
-                    <div className="text-white font-medium">
+                    <div className="text-white">
                       {item.problem}
                     </div>
                   </div>
