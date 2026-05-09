@@ -28,12 +28,20 @@ export const useApp = () => {
             } = result;
 
             setTimeout(() => {
-                setMessages(prev => [...prev, {
-                    problem,
-                    solution_1,
-                    solution_2,
-                    judgement
-                }]);
+                setMessages((prev) => {
+                    const allMessages = [...prev];
+
+                    // overwriting last message
+                    allMessages[ allMessages.length - 1 ] = {
+                        problem,
+                        solution_1,
+                        solution_2,
+                        judgement
+                    };
+
+                    return allMessages;
+                });
+
             }, 1500);
 
         } catch(err) {

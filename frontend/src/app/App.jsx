@@ -8,7 +8,6 @@ import { useApp } from './hooks/useApp';
 import { AppContext } from './app.context';
 
 const App = () => {
-
   const app = useApp();
   const context = useContext(AppContext);
   const {messages, setMessages} = context;

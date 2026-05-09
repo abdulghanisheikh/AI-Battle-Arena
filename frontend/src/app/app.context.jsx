@@ -29,17 +29,7 @@ export const AppContextProvider = ({children}) => {
     //     }
     // ];
 
-    const [messages, setMessages] = useState([{
-        problem: "",
-        solution_1: "",
-        solution_2: "",
-        judgement: {
-            solution_1_score: 0,
-            solution_2_score: 0,
-            solution_1_reasoning: "",
-            solution_2_reasoning: ""
-        }
-    }]);
+    const [messages, setMessages] = useState([]);
 
     return <AppContext.Provider value={{messages, setMessages}}>
         {children}

@@ -27,7 +27,7 @@ const ModelCard = ({ variant, isWinner, hasJudgement, score, content }) => {
   );
 
   return (
-    <div className={`bg-[#1c1e22] border rounded-xl p-6 flex flex-col transition-all ${cardStyle}`}>
+    <div className={`bg-[#1c1e22] border rounded-xl p-6 flex h-fit flex-col transition-all ${cardStyle}`}>
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
         <div className="flex items-center gap-2 text-zinc-400 tracking-wider">
           {icon}
