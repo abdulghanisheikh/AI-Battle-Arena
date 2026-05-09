@@ -1,4 +1,3 @@
-import React from 'react';
 import ModelCard from './ModelCard';
 import { BsSend } from "react-icons/bs";
 import UserChat from './UserChat';
@@ -11,6 +10,7 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
       {/* Scrollable feed */}
       <div className="flex-1 overflow-y-auto p-6 pb-23 hide-scrollbar">
         <div className="max-w-4xl mx-auto flex flex-col gap-10">
+          
           {messages.map((item, idx) => {
             const isModelAWinner = item.judgement && item.judgement.winner === 1;
             const isModelBWinner = item.judgement && item.judgement.winner === 2;
@@ -53,7 +53,7 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
       {/* Fixed Input Bottom */}
       <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#111316] via-[#111316] to-transparent">
         <div className="max-w-4xl mx-auto">
-          <form onSubmit={handleSend} className="bg-[#282a2d] rounded-xl flex items-center p-2 shadow-2xl border border-white/5">
+          <form onSubmit={(e) => handleSend(e)} className="bg-[#282a2d] rounded-xl flex items-center p-2 shadow-2xl border border-white/5">
             <input
               type="text"
               placeholder="Type your problem statement here"
@@ -67,7 +67,7 @@ const ChatArea = ({ messages, messagesEndRef, inputValue, setInputValue, handleS
             </button>
 
             <button type="submit" className="bg-[#b0c6ff] text-[#002d6e] px-5 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-[#d9e2ff] transition-colors cursor-pointer">
-              <span>SEND</span> 
+              <span>SEND</span>
               <BsSend size={18} />
             </button>
           </form>

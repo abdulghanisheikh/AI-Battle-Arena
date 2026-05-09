@@ -1,12 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import './index.css';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
-import ChatArea from './components/ChatArea';
+import ChatInterface from './components/ChatInterface';
 import EmptyState from './components/EmptyState';
+import { useApp } from './hooks/useApp';
+import { AppContext } from './app.context';
 
 const App = () => {
-  const [messages, setMessages] = useState([]);
+
+  const app = useApp();
+  const context = useContext(AppContext);
+  const {messages, setMessages} = context;
 
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
@@ -19,41 +24,13 @@ const App = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = (e) => {
+  const handleSend = async(e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    const newMockEntry = {
-      problem: inputValue,
-      solution_1: "Loading...",
-      solution_2: "Loading...",
-      judgement: null
-    };
-
-    setMessages([...messages, newMockEntry]);
     setInputValue('');
     
-    setTimeout(() => {
-      setMessages(prev => {
-        const newMessages = [...prev];
-        const lastMsgIndex = newMessages.length - 1;
-
-        newMessages[lastMsgIndex] = {
-          problem: newMessages[lastMsgIndex].problem,
-          solution_1: "Technical output for: " + newMessages[lastMsgIndex].problem,
-          solution_2: "Creative output for: " + newMessages[lastMsgIndex].problem,
-          judgement: {
-            solution_1_score: 8.0,
-            solution_2_score: 9.5,
-            solution_1_reasoning: "Accurate.",
-            solution_2_reasoning: "Highly engaging.",
-            winner: 2
-          }
-        };
-
-        return newMessages;
-      });
-    }, 1500);
+    await app.handleSendMessage(inputValue);
   };
 
   return (
@@ -75,7 +52,7 @@ const App = () => {
             handleSend={handleSend}
           />
         ) : (
-          <ChatArea 
+          <ChatInterface 
             messages={messages}
             messagesEndRef={messagesEndRef}
             inputValue={inputValue}

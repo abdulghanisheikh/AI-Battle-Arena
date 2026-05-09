@@ -1,9 +1,45 @@
 import { startBattle } from "../services/app.api";
+import {useContext} from "react";
+import { AppContext } from "../app.context.jsx";
 
-const useApp = () => {
+export const useApp = () => {
+    const context = useContext(AppContext);
+    const {setMessages} = context;
+
     const handleSendMessage = async(userMessage) => {
-        
-    } 
-}
+        try {
+            const newMockEntry = {
+                problem: userMessage,
+                solution_1: "Loading...",
+                solution_2: "Loading...",
+                judgement: null
+            };
 
-export default useApp;
+            setMessages(prev => [...prev, newMockEntry]);
+
+            const {data} = await startBattle(userMessage);
+            const result = data.result;
+
+            const {
+                problem,
+                solution_1,
+                solution_2,
+                judgement
+            } = result;
+
+            setTimeout(() => {
+                setMessages(prev => [...prev, {
+                    problem,
+                    solution_1,
+                    solution_2,
+                    judgement
+                }]);
+            }, 1500);
+
+        } catch(err) {
+            console.log(err.response?.data?.message || "Something went wrong. Please try again.");
+        }
+    }
+
+    return { handleSendMessage };
+}
