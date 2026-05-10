@@ -18,7 +18,7 @@ export const useApp = () => {
             setMessages(prev => [...prev, newMockEntry]);
 
             const {data} = await startBattle(userMessage);
-            const result = data.result;
+            const {result} = data;
 
             const {
                 problem,
@@ -41,7 +41,6 @@ export const useApp = () => {
 
                     return allMessages;
                 });
-
             }, 1500);
 
         } catch(err) {

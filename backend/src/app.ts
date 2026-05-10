@@ -1,11 +1,11 @@
-import express from "express";
+import express, {type Application, type Request, type Response} from "express";
 import graphRouter from "./routes/graph.routes.js";
 import cors from "cors";
-import path, { dirname } from "path";
+import path from "path";
 import appConfig from "./configs/config.js";
 import { fileURLToPath } from "url";
 
-const app = express();
+const app: Application = express();
 
 app.use(cors({
     origin: appConfig.FRONTEND,
@@ -20,11 +20,11 @@ app.use(express.json());
 app.use("/useGraph", graphRouter);
 
 // health check
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.status(200).json({ status: "ok" });
 });
 
-app.get("*splat", (req, res) => {
+app.get("*splat", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
 
