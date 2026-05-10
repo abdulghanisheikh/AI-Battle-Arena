@@ -6,7 +6,8 @@ type CONFIG = {
     readonly MISTRAL_API_KEY: string,
     readonly COHERE_API_KEY: string,
     readonly PORT: string,
-    readonly FRONTEND: string
+    readonly FRONTEND_URL: string,
+    readonly NODE_ENV: string
 }
 
 const appConfig: CONFIG = {
@@ -14,7 +15,8 @@ const appConfig: CONFIG = {
     MISTRAL_API_KEY: process.env.MISTRAL_API_KEY || "",
     COHERE_API_KEY: process.env.COHERE_API_KEY || "",
     PORT: process.env.PORT || "",
-    FRONTEND: process.env.FRONTEND || ""
+    FRONTEND_URL: process.env.FRONTEND_URL || "",
+    NODE_ENV: process.env.NODE_ENV || ""
 }
 
 export default appConfig;
