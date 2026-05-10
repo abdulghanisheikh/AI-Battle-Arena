@@ -11,6 +11,7 @@ app.use(cors({
     origin: appConfig.NODE_ENV === 'development' ? true: appConfig.FRONTEND_URL,
     credentials: true
 }));
+
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
