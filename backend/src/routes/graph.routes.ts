@@ -1,8 +1,8 @@
 import { Router } from "express";
-import {useGraph} from "../controllers/graph.controllers.js";
+import {invokeGraph} from "../controllers/graph.controllers.js";
 
 const router = Router();
 
-router.post("/", useGraph);
+router.post("/", invokeGraph);
 
 export default router;

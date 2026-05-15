@@ -17,13 +17,13 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 // all routes
 app.get("/health", (req: Request, res: Response) => { // health check
     res.status(200).json({ status: "ok" });
 });
-app.use("/useGraph", graphRouter);
-
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use("/invokeGraph", graphRouter);
 
 app.get("*splat", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'));

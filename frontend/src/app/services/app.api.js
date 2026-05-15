@@ -5,6 +5,6 @@ const api = new axios.create({
 });
 
 export const startBattle = async(userMessage) => {
-    const response = await api.post('/useGraph', {userMessage});
+    const response = await api.post('/invokeGraph', {userMessage});
     return response;
 }
